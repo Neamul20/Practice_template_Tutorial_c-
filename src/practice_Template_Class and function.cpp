@@ -14,10 +14,15 @@ void _swap(T &a, T &b){  //Template Function
 	b=a;
 	a=temp;
 }
+template <class T>
+void printValue(T a){
+	cout<<"The value is: "<<a<<endl;
+}
 int main() {
 	int a=10,b=20;
 	cout<<"a= "<<a<<"\n"<<"b= "<<b<<endl;
 	_swap (a,b);
 	cout<<"a= "<<a<<"\n"<<"b= "<<b<<endl;
+	printValue ('a');
 	return 0;
 }
