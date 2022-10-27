@@ -16,7 +16,7 @@ void _swap(T &a, T &b){  //Template Function
 }
 template <class T>
 void printValue(T a){
-	cout<<"The value is: "<<a<<endl;
+	return;
 }
 int main() {
 	int a=10,b=20;
