@@ -39,6 +39,8 @@ public:
 		tail=newNode;
 		}
 	}
+
+
 	int pop_front(){
 		if (head==NULL) return -1;
 		Node* temp=head;
@@ -56,6 +58,20 @@ public:
 		while(temp!=NULL){
 			cout<<temp->data<<",";
 			temp=temp->next;
+		}
+		cout<<endl;
+	}
+
+	void reverce(Node* node){
+		if (node->next!=NULL){
+			reverce(node->next);
+		}
+		cout<<node->data<<",";
+	}
+
+	void reverce_list(){
+		if (head!=NULL) {
+			reverce(head);
 		}
 		cout<<endl;
 	}
@@ -82,7 +98,7 @@ int main() {
 	ll.print_list();
 
 	cout<<ll.pop_front()<<endl;;
-
 	ll.print_list();
+	ll.reverce_list();
 	return 0;
 }
