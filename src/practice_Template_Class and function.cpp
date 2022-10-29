@@ -47,16 +47,16 @@ public:
 	void print_list(); // Function outside of class template
 
 
-	void reverce(Node<Tn>* node){ // Function declaration intside of class template
+	void reverse(Node<Tn>* node){ // Function declaration intside of class template
 		if (node->next!=NULL){
-			reverce(node->next);
+			reverse(node->next);
 		}
 		cout<<node->data<<",";
 	}
 
-	void reverce_list(){ // Function declaration intside of class template
+	void reverse_list(){ // Function declaration intside of class template
 		if (head!=NULL) {
-			reverce(head);
+			reverse(head);
 		}
 		cout<<endl;
 	}
@@ -105,6 +105,6 @@ int main() {
 
 	cout<<ll.pop_front()<<endl;;
 	ll.print_list();
-	ll.reverce_list();
+	ll.reverse_list();
 	return 0;
 }
