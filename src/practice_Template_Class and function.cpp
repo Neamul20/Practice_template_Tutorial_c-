@@ -8,31 +8,33 @@
 
 #include <iostream>
 using namespace std;
-class Node{
+template <class Tn> class Node{
+
 public:
-	int data;
+	Tn data;
 	Node* next;
 
 	Node(){
 			data=0;
 			next=NULL;
 	}
-	Node(int data){
+	Node(Tn data){
 		this->data=data;
 		this-> next=NULL;
 	}
 };
 
-class Linkedlist {
-	Node* head; Node* tail;
+template <class Tn> class Linkedlist {
+
+	Node<Tn> *head; Node<Tn> *tail;
 public:
 	Linkedlist(){
 		head=NULL;
 		tail=NULL;
 	}
 
-	void push_back(int data){
-		Node* newNode= new Node(data);
+	void push_back(Tn data){
+		Node<Tn>* newNode= new Node<Tn>(data);
 		if (head==NULL){head=newNode; tail=newNode;}
 	else {
 		tail->next=newNode;
@@ -43,18 +45,17 @@ public:
 
 	int pop_front(){
 		if (head==NULL) return -1;
-		Node* temp=head;
-		int poped_data= head->data;
+		Node<Tn>* temp=head;
+		Tn poped_data= head->data;
 		head=head->next;
 		delete temp;
 
 		return poped_data;
 
-
 	}
 
 	void print_list(){
-		Node*temp=head;
+		Node<Tn>*temp=head;
 		while(temp!=NULL){
 			cout<<temp->data<<",";
 			temp=temp->next;
@@ -62,7 +63,7 @@ public:
 		cout<<endl;
 	}
 
-	void reverce(Node* node){
+	void reverce(Node<Tn>* node){
 		if (node->next!=NULL){
 			reverce(node->next);
 		}
@@ -77,6 +78,8 @@ public:
 	}
 
 };
+
+// Example for template function
 /*template <class T>
 void _swap(T &a, T &b){  //Template Function
 	T temp=b;
@@ -88,12 +91,12 @@ cout<<"The output is "<<a<<endl;
 }
 */
 int main() {
-	Linkedlist ll;
-	ll.push_back(0);
-	ll.push_back(1);
-	ll.push_back(2);
-	ll.push_back(3);
-	ll.push_back(4);
+	Linkedlist<char> ll;
+	ll.push_back('a');
+	ll.push_back('b');
+	ll.push_back('c');
+	ll.push_back('d');
+	ll.push_back('e');
 
 	ll.print_list();
 
