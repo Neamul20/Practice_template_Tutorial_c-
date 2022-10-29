@@ -33,7 +33,7 @@ public:
 		tail=NULL;
 	}
 
-	void push_back(Tn data){
+	void push_back(Tn data){ // Function declaration intside of class template
 		Node<Tn>* newNode= new Node<Tn>(data);
 		if (head==NULL){head=newNode; tail=newNode;}
 	else {
@@ -42,8 +42,37 @@ public:
 		}
 	}
 
+	Tn pop_front(); // Function outside of class template
 
-	int pop_front(){
+	void print_list(); // Function outside of class template
+
+
+	void reverce(Node<Tn>* node){ // Function declaration intside of class template
+		if (node->next!=NULL){
+			reverce(node->next);
+		}
+		cout<<node->data<<",";
+	}
+
+	void reverce_list(){ // Function declaration intside of class template
+		if (head!=NULL) {
+			reverce(head);
+		}
+		cout<<endl;
+	}
+
+};
+template <class Tn> // Function declaration outside of class template
+void Linkedlist<Tn>::print_list(){
+		Node<Tn>*temp=head;
+		while(temp!=NULL){
+			cout<<temp->data<<",";
+			temp=temp->next;
+		}
+		cout<<endl;
+	}
+template <class Tn> // Function declaration outside of class template
+Tn Linkedlist<Tn>:: pop_front(){
 		if (head==NULL) return -1;
 		Node<Tn>* temp=head;
 		Tn poped_data= head->data;
@@ -53,32 +82,6 @@ public:
 		return poped_data;
 
 	}
-
-	void print_list(){
-		Node<Tn>*temp=head;
-		while(temp!=NULL){
-			cout<<temp->data<<",";
-			temp=temp->next;
-		}
-		cout<<endl;
-	}
-
-	void reverce(Node<Tn>* node){
-		if (node->next!=NULL){
-			reverce(node->next);
-		}
-		cout<<node->data<<",";
-	}
-
-	void reverce_list(){
-		if (head!=NULL) {
-			reverce(head);
-		}
-		cout<<endl;
-	}
-
-};
-
 // Example for template function
 /*template <class T>
 void _swap(T &a, T &b){  //Template Function
